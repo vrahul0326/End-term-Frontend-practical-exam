@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Blog</title>
+
+<style>
+
+:root {
+    --bg: #f2f4fc;
+    --text: #222222;
+    --card: #ffffff;
+    --accent: #4779c7;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 25px;
+    transition: 0.3s;
+}
+
+body.dark {
+    --bg: #11151f;
+    --text: #f1f1f1;
+    --card: #1d2638;
+    --accent: #82aaff;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    padding: 10px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    margin-top: 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+    color: var(--accent);
+}
+
+.date {
+    color: gray;
+    font-size: 13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h2>My Blog</h2>
+
+        <button id="toggleBtn" onclick="toggleMode()">
+            Dark mode
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Learning HTML the Easy Way</h3>
+
+        <p class="date">12 Nov 2026 • 3 min read</p>
+
+        <p>
+            HTML gives structure to a web page.
+            Start with headings, paragraphs and lists,
+            then slowly add images and links.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Why CSS Variables Are Useful</h3>
+
+        <p class="date">8 Nov 2026 • 4 min read</p>
+
+        <p>
+            With CSS variables you can change the colours
+            of a whole website by editing only a few lines.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+let button = document.getElementById("toggleBtn");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    button.innerText = "Light mode";
+}
+
+function toggleMode() {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+
+        button.innerText = "Light mode";
+
+        localStorage.setItem("theme", "dark");
+
+    } else {
+
+        button.innerText = "Dark mode";
+
+        localStorage.setItem("theme", "light");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
